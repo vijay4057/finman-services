@@ -1,4 +1,4 @@
-package com.finman;
+package com.finman.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public InternalResourceViewResolver viewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("WEB-INF/pages/");
+		resolver.setPrefix("/WEB-INF/pages/");
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
