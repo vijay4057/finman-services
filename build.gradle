@@ -47,14 +47,19 @@ repositories {
         }
 }
 
+configurations {
+    provided.all*.exclude group: 'javax.servlet'
+}
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-test")
 	compile("mysql:mysql-connector-java")
+	compile("com.mangofactory:swagger-springmvc:0.5.2"){
+		exclude group: 'org.slf4j', module: 'slf4j-log4j12' //by both name and group
+	}
     compile 'org.slf4j:slf4j-api:1.7.21'
     testCompile 'junit:junit:4.12'
 }
