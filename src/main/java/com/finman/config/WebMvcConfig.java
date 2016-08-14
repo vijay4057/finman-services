@@ -9,6 +9,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
+/**
+ * Configuation Class for this project contains Static file Configurations etc
+ * @author Vijay
+ *
+ */
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
@@ -16,6 +21,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 
+	/**
+	 * To Display static files to UI. added the below View Resolver
+	 * @return
+	 */
 	@Bean
 	public InternalResourceViewResolver viewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();

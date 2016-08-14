@@ -4,16 +4,47 @@ apply plugin: 'spring-boot'
 
 buildscript {
     repositories {
-	    jcenter()
-        mavenCentral()
+        maven {
+            url 'http://localhost:8081/artifactory/remote-repos'
+            
+        }
+        
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE")
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE"
     }
 }
 
+allprojects {
+    apply plugin: "com.jfrog.artifactory"
+}
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
+    publish {
+        repository {
+            repoKey = 'libs-release-local'
+            maven = true
+            
+        }
+    }
+    resolve {
+        repository {
+            repoKey = 'libs-release'
+            maven = true
+            
+        }
+    }
+}
+
+
+
 repositories {
-    jcenter()
+    maven {
+            url 'http://localhost:8081/artifactory/remote-repos'
+            
+        }
 }
 
 
@@ -22,6 +53,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-test")
 	compile("mysql:mysql-connector-java")
     compile 'org.slf4j:slf4j-api:1.7.21'
     testCompile 'junit:junit:4.12'
