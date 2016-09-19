@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"com.finman.config", "com.finman.login"})
+@ComponentScan(basePackages = {"com.finman"})
 
 /**
  * Entry class for the project
