@@ -1,7 +1,5 @@
 package com.finman.employee;
 
-import java.util.Optional;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.repository.CrudRepository;
@@ -23,12 +21,12 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     Employee findById(Integer id);
 
     /**
-     * Uses {@link Optional} as return and parameter type.
+     * Uses {@link Employee} as return and parameter type.
      * 
      * @param name
      * @return
      */
-    Optional<Employee> findByName(Optional<String> name);
+    Employee findByName(String name);
 
 
 

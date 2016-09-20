@@ -1,6 +1,6 @@
 package com.finman.employee;
 
-import java.util.List;
+import com.finman.exception.EmployeeNotFoundException;
 
 /**
  * Employee Manager Interface
@@ -14,14 +14,16 @@ public interface EmployeeManager {
      * 
      * @param id
      * @return {@link EmployeeDTO}}
+     * @throws EmployeeNotFoundException
      */
-    public EmployeeDTO getEmployeeDetails(Integer id);
+    public EmployeeDTO getEmployeeDetails(Integer id) throws EmployeeNotFoundException;
 
     /**
      * Returns employee details
      * 
      * @param name
-     * @return {@link EmployeeDTO} List
+     * @return {@link EmployeeDTO}
+     * @throws EmployeeNotFoundException
      */
-    public List<EmployeeDTO> getEmployeeDetailsByName(String name);
+    public EmployeeDTO getEmployeeDetails(String name) throws EmployeeNotFoundException;
 }

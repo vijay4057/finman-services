@@ -1,13 +1,11 @@
 package com.finman.employee;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.finman.exception.EmployeeNotFoundException;
 
 /**
  * The Employee Manager Impl Class
@@ -22,17 +20,23 @@ public class EmployeeManagerImpl implements EmployeeManager {
     EmployeeRepository employeeRepository;
 
     @Override
-    @Transactional
-    public EmployeeDTO getEmployeeDetails(Integer id) {
+    public EmployeeDTO getEmployeeDetails(Integer id) throws EmployeeNotFoundException {
         Employee employee = employeeRepository.findById(id);
+        if (employee == null) {
+            throw new EmployeeNotFoundException();
+        }
         ObjectMapper mapper = new ObjectMapper();
-        EmployeeDTO employeeDTO = mapper.convertValue(employee, EmployeeDTO.class);
-        return employeeDTO;
+        return mapper.convertValue(employee, EmployeeDTO.class);
     }
 
     @Override
-    public List<EmployeeDTO> getEmployeeDetailsByName(String name) {
-        return null;
+    public EmployeeDTO getEmployeeDetails(String name) throws EmployeeNotFoundException {
+        Employee employee = employeeRepository.findByName(name);
+        if (employee == null) {
+            throw new EmployeeNotFoundException();
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.convertValue(employee, EmployeeDTO.class);
     }
 
 }

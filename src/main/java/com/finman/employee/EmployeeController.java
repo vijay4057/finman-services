@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.finman.exception.EmployeeNotFoundException;
 import com.finman.util.Response;
 
 /**
@@ -27,12 +28,12 @@ public class EmployeeController {
     EmployeeManager employeeManager;
 
     /**
-     * Returns Employee Details for given uerid
+     * Returns Employee Details for given userid
      * 
      * @param id
      * @return {@link EmployeeDTO}
      */
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/employees/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Response<EmployeeDTO> getUserDetails(@PathVariable Integer id) {
         EmployeeDTO employeeDTO;
         try {
@@ -41,6 +42,20 @@ public class EmployeeController {
             LOGGER.error("", e);
             return Response.failure("Internal Error");
         }
+        return Response.success(employeeDTO);
+    }
+
+    /**
+     * Returns Employee Details for given userName
+     * 
+     * @param id
+     * @return {@link EmployeeDTO}
+     * @throws EmployeeNotFoundException 
+     */
+    @RequestMapping(value = "/employees/name/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response<EmployeeDTO> getUserDetailsByName(@PathVariable String name) throws EmployeeNotFoundException {
+        EmployeeDTO employeeDTO;
+        employeeDTO = employeeManager.getEmployeeDetails(name);
         return Response.success(employeeDTO);
     }
 }
