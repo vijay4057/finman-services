@@ -8,7 +8,7 @@ import com.finman.exception.EmployeeNotFoundException;
  * @author Superuser
  *
  */
-public interface EmployeeManager {
+public interface EmployeeService {
     /**
      * Returns employee details
      * 

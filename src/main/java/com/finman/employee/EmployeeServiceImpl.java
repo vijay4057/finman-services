@@ -14,7 +14,7 @@ import com.finman.exception.EmployeeNotFoundException;
  *
  */
 @Service
-public class EmployeeManagerImpl implements EmployeeManager {
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Resource
     EmployeeRepository employeeRepository;

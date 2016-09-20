@@ -25,7 +25,7 @@ public class EmployeeController {
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
     @Resource
-    EmployeeManager employeeManager;
+    EmployeeService employeeManager;
 
     /**
      * Returns Employee Details for given userid
