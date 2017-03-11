@@ -1,6 +1,7 @@
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
+apply plugin: 'war'
 
 buildscript {
     repositories {
@@ -58,14 +59,14 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-test")
 	compile("org.springframework.boot:spring-boot-starter-data-jpa")
 	compile("mysql:mysql-connector-java")
-	//compile("com.mangofactory:swagger-springmvc:0.5.2"){
-		//exclude group: 'org.slf4j', module: 'slf4j-log4j12' //by both name and group
-	//}
-    testCompile 'junit:junit:4.12'
-    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.12'
+	compile("org.webjars:bootstrap:3.0.3")
+	compile("org.webjars:jquery:2.0.3-1")
+	compile('com.mangofactory:swagger-springmvc:1.0.2')
+	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+	
     
 }
 
 springBoot {
-    mainClass = "com.finman.Application"
+    mainClass = "com.finman.FinmanApplication"
 }

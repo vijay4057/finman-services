@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.finman.exception.EmployeeNotFoundException;
 import com.finman.util.Response;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
 
 /**
  * Employee Controller Class
@@ -20,6 +24,7 @@ import com.finman.util.Response;
  *
  */
 @RestController
+@Api(basePath = "/employees", value = "Employee", description = "Operations with employee", produces = "application/json")
 public class EmployeeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
