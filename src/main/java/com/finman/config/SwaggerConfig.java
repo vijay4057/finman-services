@@ -1,4 +1,4 @@
-package com.finman;
+package com.finman.config;
  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

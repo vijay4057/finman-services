@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.finman.exception.EmployeeNotFoundException;
 import com.finman.util.Response;
 import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiResponse;
-import com.wordnik.swagger.annotations.ApiResponses;
 
 /**
  * Employee Controller Class
@@ -39,7 +37,7 @@ public class EmployeeController {
      * @return {@link EmployeeDTO}
      */
     @RequestMapping(value = "/employees/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response<EmployeeDTO> getUserDetails(@PathVariable Integer id) {
+    public ResponseEntity<Response<EmployeeDTO>> getUserDetails(@PathVariable Integer id) {
         EmployeeDTO employeeDTO;
         try {
             employeeDTO = employeeManager.getEmployeeDetails(id);
@@ -55,10 +53,10 @@ public class EmployeeController {
      * 
      * @param id
      * @return {@link EmployeeDTO}
-     * @throws EmployeeNotFoundException 
+     * @throws EmployeeNotFoundException
      */
     @RequestMapping(value = "/employees/name/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response<EmployeeDTO> getUserDetailsByName(@PathVariable String name) throws EmployeeNotFoundException {
+    public ResponseEntity<Response<EmployeeDTO>> getUserDetailsByName(@PathVariable String name) throws EmployeeNotFoundException {
         EmployeeDTO employeeDTO;
         employeeDTO = employeeManager.getEmployeeDetails(name);
         return Response.success(employeeDTO);

@@ -1,5 +1,8 @@
 package com.finman.util;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 /**
  * Return Response Object
  * 
@@ -29,8 +32,8 @@ public class Response<T> {
         this.data = data;
     }
 
-    public static<T> Response<T> success(T data) {
-        return new Response<>("Success", 200, data);
+    public static <T> ResponseEntity<Response<T>> success(T data) {
+        return new ResponseEntity<>(new Response<>("Success", 200, data), HttpStatus.OK);
     }
 
     public Response<T> success(String status, T data) {
@@ -41,14 +44,14 @@ public class Response<T> {
         return new Response<>(status, code, data);
     }
 
-    public static<T> Response<T> failure(String status) {
-        return new Response<>(status, 500, null);
+    public static <T> ResponseEntity<Response<T>> failure(String status) {
+        return new ResponseEntity<>(new Response<>(status, 500, null), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    public static<T> Response<T> failure(int code) {
+    public static <T> Response<T> failure(int code) {
         return new Response<>("Internal Error", code, null);
     }
-    
+
 
     public String getStatus() {
         return status;
