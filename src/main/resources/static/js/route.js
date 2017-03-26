@@ -1,9 +1,10 @@
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "index.html"
+        templateUrl : "/index.html"
     })
     .when("/customer", {
-        templateUrl : "/customer/customer.html"
+        templateUrl : "/customer/customer.html",
+        controller : "CustomerController"
     });
 });

@@ -29,7 +29,7 @@
 			    <li class="dropdown">
 			        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Customer <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-			            <li><a href="#">Add/Edit Customer</a></li>
+			            <li><a href="#customer">Add/Edit Customer</a></li>
 			            <li><a href="#">Close Customer</a></li>
 			        </ul>
 			    </li>
@@ -61,7 +61,9 @@
 	<div class="container"  style="height: 70%;">
 		<div class="row">
 			<div class="row-height">
-	      		<div class = "col-md-12">Body</div>
+	      		<div class = "col-md-12">
+	      			<div ng-view></div>
+	      		</div>
 	      	</div>
 		</div>
 	</div>
@@ -72,8 +74,10 @@
 	</footer>
 	<!-- Angular Material requires Angular.js Libraries -->
 	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
 	  <script src="/js/app.js"></script>
 	  <script src="/js/route.js"></script>
+	  <script src="/customer/customer-controller.js"></script>
   
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
