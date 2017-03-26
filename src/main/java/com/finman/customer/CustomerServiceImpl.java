@@ -22,6 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
         return mapper.convertValue(customer, CustomerDTO.class);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<CustomerDTO> getAllCustomers() {
         Iterable<Customer> customer = customerRepository.findAll();
