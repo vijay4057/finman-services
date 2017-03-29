@@ -34,9 +34,10 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/customers", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Integer> saveCustomer(@RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity<String> saveCustomer(@RequestBody CustomerDTO customerDTO) {
+        customerDTO.setCreatedBy("1");
         customerService.saveCustomer(customerDTO);
-        return new ResponseEntity<>(customerDTO.getId(), HttpStatus.CREATED);
+        return new ResponseEntity<>(customerDTO.getCustId(), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

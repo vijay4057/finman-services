@@ -8,12 +8,16 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.finman.sequence.SequenceService;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     @Resource
     CustomerRepository customerRepository;
+
+    @Resource
+    SequenceService sequenceService;
 
     @Override
     public CustomerDTO getCustomer(Integer id) {
@@ -32,6 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void saveCustomer(CustomerDTO customerDTO) {
+        customerDTO.setCustId("CUST" + sequenceService.getCustomerSequence());
         ObjectMapper mapper = new ObjectMapper();
         Customer customer = mapper.convertValue(customerDTO, Customer.class);
         customer.setCreatedDate(new Date());

@@ -1,10 +1,12 @@
 package com.finman.customer;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.finman.dto.BaseDTO;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CustomerDTO extends BaseDTO{
+public class CustomerDTO extends BaseDTO {
 
     private static final long serialVersionUID = -4574403255510740155L;
 
@@ -34,7 +36,7 @@ public class CustomerDTO extends BaseDTO{
 
     private String createdBy;
 
-    private String createdByDate;
+    private Date createdDate;
 
     private String landmark;
 
@@ -142,19 +144,19 @@ public class CustomerDTO extends BaseDTO{
         this.createdBy = createdBy;
     }
 
-    public String getCreatedByDate() {
-        return createdByDate;
-    }
-
-    public void setCreatedByDate(String createdByDate) {
-        this.createdByDate = createdByDate;
-    }
-
     public String getLandmark() {
         return landmark;
     }
 
     public void setLandmark(String landmark) {
         this.landmark = landmark;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 }
