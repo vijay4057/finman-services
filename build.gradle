@@ -6,21 +6,36 @@ apply plugin: 'war'
 buildscript {
     repositories {
         maven {
-            mavenCentral()            
-//            url 'http://localhost:8081/artifactory/remote-repos'
+            url 'http://localhost:8081/artifactory/remote-repos'
             
         }
         
     }
-    
     dependencies {
-       // classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE"
     }
 }
 
 allprojects {
     apply plugin: "com.jfrog.artifactory"
+}
+
+artifactory {
+    publish {
+        repository {
+            repoKey = 'libs-release-local'
+            maven = true
+            
+        }
+    }
+    resolve {
+        repository {
+            repoKey = 'libs-release'
+            maven = true
+            
+        }
+    }
 }
 
 
