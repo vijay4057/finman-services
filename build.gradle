@@ -6,7 +6,8 @@ apply plugin: 'war'
 buildscript {
     repositories {
         maven {
-            url 'http://localhost:8081/artifactory/remote-repos'
+            mavenCentral()            
+//            url 'http://localhost:8081/artifactory/remote-repos'
             
         }
         
@@ -19,24 +20,6 @@ buildscript {
 
 allprojects {
     apply plugin: "com.jfrog.artifactory"
-}
-
-artifactory {
-    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
-    publish {
-        repository {
-            repoKey = 'libs-release-local'
-            maven = true
-            
-        }
-    }
-    resolve {
-        repository {
-            repoKey = 'libs-release'
-            maven = true
-            
-        }
-    }
 }
 
 
