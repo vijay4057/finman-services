@@ -12,8 +12,9 @@ buildscript {
         }
         
     }
+    
     dependencies {
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+       // classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE"
     }
 }
