@@ -43,8 +43,8 @@ artifactory {
 
 repositories {
     maven {
-            url 'http://localhost:8081/artifactory/remote-repos'
-            
+            //url 'http://localhost:8081/artifactory/remote-repos'
+            mavenCentral()            
         }
 }
 
