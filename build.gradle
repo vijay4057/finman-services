@@ -7,7 +7,7 @@ buildscript {
     repositories {
         maven {
             url 'http://localhost:8081/artifactory/remote-repos'
-            
+            url "https://plugins.gradle.org/m2/"
         }
         
     }
@@ -45,6 +45,7 @@ repositories {
     maven {
             //url 'http://localhost:8081/artifactory/remote-repos'
             mavenCentral()            
+            url "https://plugins.gradle.org/m2/"
         }
 }
 
