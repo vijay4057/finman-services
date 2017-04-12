@@ -22,6 +22,7 @@ allprojects {
 }
 
 artifactory {
+    contextUrl = "http://localhost:8081/artifactory/"   //The base Artifactory URL if not overridden by the publisher/resolver
     publish {
         repository {
             repoKey = 'libs-release-local'
